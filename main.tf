@@ -17,21 +17,3 @@ locals {
    Project = "IT"
  }
 }
-
-resource "aws_s3_bucket" "lseg" {
-  acl = "private"
-  bucket = local.bucket-prefix 
-}
-
-resource "random_string" "lseg-pt" {
-  length = 6
-  special = false
-  upper =  false
-}
-variable "project" {
-   default = "it"
-}
-locals {
-  bucket-prefix = "${var.project}-${random_string.lseg-pt.id}-bucket"
-}
-
