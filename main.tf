@@ -11,9 +11,6 @@ resource "aws_instance" "webserver2" {
    
 }
 provider "aws" {
-  region = "eu-west-2"
-}
-provider "aws" {
   region     = "eu-west-1"
   access_key = "your-access-key"
   secret_key = "your-secret-key"
