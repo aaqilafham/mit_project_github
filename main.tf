@@ -11,7 +11,7 @@ resource "aws_instance" "webserver2" {
    
 }
 provider "aws" {
-  region = "us-east-1"  # Change to your preferred AWS region
+  region = "eu-west-2"  # Change to your preferred AWS region
 }
 
 locals {
