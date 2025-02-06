@@ -10,6 +10,9 @@ resource "aws_instance" "webserver2" {
   tags = local.common_tags
    
 }
+provider "aws" {
+  region = "us-east-1"  # Change to your preferred AWS region
+}
 
 locals {
   common_tags = {
