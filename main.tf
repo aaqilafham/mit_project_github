@@ -1,22 +1,31 @@
-variable "ami" {
-  default = "ami-001e4d263e8980c84"
+resource "aws_vpc" "backend-vpc"{
+   cidr_block = "10.0.0.0/16"
+   tags = {
+    name = "backend-vpc"
+  }
+}
+resource "aws_subnet" "private-subnet"{
+   vpc_id = aws_vpc.backend-vpc.id
+   cidr_block = "10.0.2.0/24"
+   tags = {
+     name = "private-subnet"
+   }
 }
 
-variable "instance_type" {
-  default = "t2.micro"
-}
-variable "region" {
-  default = "eu-west-2"
-}
-variable "webservers" {
-  type = list
-  default = ["web1","web2","web3"]
-}
+resource "aws_security_group" "backend-sg"{
+   name = "backend-sg"
+   vpc_id  = aws_vpc.backend-vpc.id
+   ingress {
+     from_port = 22
+     to_port = 22
+     protocol = "tcp"
+     cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+     from_port = 8080
+     to_port = 8080
+     protocol = "tcp"
+     cidr_blocks = ["0.0.0.0/0"]
+  }
 
-
-
-resource "aws_instance" "cerberus" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  count =  length(var.webservers)
 }
