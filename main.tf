@@ -36,7 +36,7 @@ resource "aws_security_group" "backend-sg"{
 
 }
 resource "aws_instance" "lch" {
-  ami           = "ami-004b2ba21ef20d956"
+  ami           = "ami-0076be86944570bff"
   instance_type = "t3.micro"
 
   tags = {
