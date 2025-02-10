@@ -1,3 +1,9 @@
+provider "aws" {
+  region     = "eu-west-2"
+  access_key = "AKIA4IM3HQN7N5CVOIKH"
+  secret_key = "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"
+}
+
 resource "aws_vpc" "backend-vpc"{
    cidr_block = "10.0.0.0/16"
    tags = {
