@@ -22,8 +22,8 @@ resource "aws_security_group" "backend-sg"{
    name = "backend-sg"
    vpc_id  = aws_vpc.backend-vpc.id
    ingress {
-     from_port = 22
-     to_port = 22
+     from_port = 21
+     to_port = 21
      protocol = "tcp"
      cidr_blocks = ["0.0.0.0/0"]
   }
@@ -34,9 +34,4 @@ resource "aws_security_group" "backend-sg"{
      cidr_blocks = ["0.0.0.0/0"]
   }
 
-}
-resource "aws_instance" "lch" {
-  ami           = "ami-0cdb51c8064e24bbc"
-  instance_type = "t3.micro"
-  }
 }
